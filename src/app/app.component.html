@@ -1,0 +1,75 @@
+<nz-layout>
+  <nz-header><span class="text-white">Awin REST API Upload</span></nz-header>
+  <nz-content>
+    <div class="container">
+
+      <div>
+        <form class="row p-lg-5 " nz-form [nzLayout]="'inline'" [formGroup]="uploadForm">
+
+          <h3 class="col-lg-8 mx-lg-auto pt-5 px-0">Submit Your Resume</h3>
+          <span *ngIf="uploadStatus" class="col-lg-8 mx-lg-auto px-0" nz-typography nzType="success">{{uploadStatus}}</span>
+          <nz-form-item class="col-lg-8 mx-lg-auto pt-lg-5 pt-sm-3 pb-2 col-sm-12  ">
+            <nz-upload
+              [nzCustomRequest]="handleUpload" [nzFileList]="fileList"
+            >
+              <button nz-button>
+                <i nz-icon nzType="upload"></i>
+                Click to Select File
+              </button>
+            </nz-upload>
+
+          </nz-form-item>
+          <nz-form-item  class="col-lg-8 pt-2 mx-lg-auto">
+            <nz-spin *ngIf="showSpinner" nzSimple></nz-spin>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto offset-sm-0 col-sm-12 pb-2">
+            <nz-form-control nzErrorTip="Input your firstname!">
+              <nz-input-group nzPrefixIcon="user">
+                <input formControlName="firstName" nz-input placeholder="First Name"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto col-sm-12 pb-2">
+            <nz-form-control nzErrorTip="Input your lastname!">
+              <nz-input-group nzPrefixIcon="user">
+                <input formControlName="lastName" nz-input placeholder="Last Name"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto col-sm-12 pb-2">
+            <nz-form-control nzErrorTip="Input a valid email">
+              <nz-input-group nzPrefixIcon="mail">
+                <input formControlName="email" nz-input placeholder="Email"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto col-sm-12 pb-2">
+            <nz-form-control nzErrorTip="Input a Job Title!">
+              <nz-input-group nzPrefixIcon="idcard">
+                <input formControlName="jobTitle" nz-input type="text" placeholder="Job Title"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto col-sm-12 pb-2">
+            <nz-form-control nzErrorTip="Input your Job Source!">
+              <nz-input-group nzPrefixIcon="idcard">
+                <input formControlName="source" nz-input type="text" placeholder="Source"/>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="col-lg-8 mx-lg-auto">
+            <nz-form-control>
+              <button (click)="submitForm()" nz-button nzType="primary" [disabled]="!uploadForm.valid">Upload Resume
+              </button>
+            </nz-form-control>
+          </nz-form-item>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </nz-content>
+  <nz-footer class="pt-5"></nz-footer>
+</nz-layout>

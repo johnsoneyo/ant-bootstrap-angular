@@ -1,0 +1,8 @@
+{
+  "/rest/**": {
+    "target": "https://cvu.awin.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
